@@ -20,19 +20,28 @@ public class MainWindowConvertTest {
         assertEquals(465000.0,
                 // arbitrary currencies
                 MainWindow.convert("US Dollar", "Euro", currencies, 500000.0));
+
+        assertEquals(500000.0,
+                // arbitrary currencies
+                MainWindow.convert("US Dollar", "US Dollar", currencies, 500000.0));
     }
 
     @Test
     @DisplayName("Test for -500 000")
     public void testT2(){
-        assertEquals("Invalid amount, amounts cannot be negative",
+        // negative value should not be converted
+        assertEquals(-1.0,
                 MainWindow.convert("US Dollar", "Euro", currencies, -500000.0));
+
+        assertEquals(-1.0,
+                MainWindow.convert("Euro", "Euro", currencies, -500000.0));
     }
 
     @Test
     @DisplayName("Test for 1 500 000")
     public void testT3(){
-        assertEquals(2280000.0,
+        // value is not in the interval of acceptable amounts
+        assertEquals(-1.0,
                 // arbitrary currencies
                 MainWindow.convert("British Pound", "Swiss Franc", currencies, 1500000.0));
     }
@@ -40,8 +49,12 @@ public class MainWindowConvertTest {
     @Test
     @DisplayName("Test for 0 and 1 000 000")
     public void testT4(){
+        // should be converted as expected
         assertEquals(0, MainWindow.convert(
                 "Chinese Yuan Renminbi", "Japanese Yen", currencies, 0.0));
+
+        assertEquals(1520000, MainWindow.convert(
+                "British Pound", "Swiss Franc", currencies, 1000000.0));
 
         assertEquals(19410000, MainWindow.convert(
                 "Chinese Yuan Renminbi", "Japanese Yen", currencies, 1000000.0));
@@ -50,13 +63,20 @@ public class MainWindowConvertTest {
     @Test
     @DisplayName("Test for -1")
     public void testT5(){
-
+        // negative value should not be converted
+        assertEquals(-1.0,
+                MainWindow.convert("Japanese Yen", "US Dollar", currencies, -1.0));
     }
 
     @Test
     @DisplayName("Test for 1 000 001")
     public void testT6(){
+        // value is not in the interval of acceptable amounts
+        assertEquals(-1.0,
+                MainWindow.convert("Japanese Yen", "US Dollar", currencies, -1000001.0));
 
+        assertEquals(-1.0,
+                MainWindow.convert("Japanese Yen", "Japanese Yen", currencies, -1000001.0));
     }
 
     @BeforeEach
