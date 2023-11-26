@@ -36,7 +36,11 @@ public class MainWindowConvertTest {
     @Test
     @DisplayName("Test for 0 and 1 000 000")
     public void testT4(){
+        assertEquals(0, MainWindow.convert(
+                "Chinese Yuan Renminbi", "Japanese Yen", currencies, 0.0));
 
+        assertEquals(19410000, MainWindow.convert(
+                "Chinese Yuan Renminbi", "Japanese Yen", currencies, 1000000.0));
     }
 
     @Test
