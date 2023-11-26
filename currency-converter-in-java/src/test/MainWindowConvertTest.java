@@ -18,19 +18,23 @@ public class MainWindowConvertTest {
     @DisplayName("Test for 500 000")
     public void testT1(){
         assertEquals(465000.0,
+                // arbitrary currencies
                 MainWindow.convert("US Dollar", "Euro", currencies, 500000.0));
     }
 
     @Test
     @DisplayName("Test for -500 000")
     public void testT2(){
-
+        assertEquals("Invalid amount, amounts cannot be negative",
+                MainWindow.convert("US Dollar", "Euro", currencies, -500000.0));
     }
 
     @Test
     @DisplayName("Test for 1 500 000")
     public void testT3(){
-
+        assertEquals(2280000.0,
+                // arbitrary currencies
+                MainWindow.convert("British Pound", "Swiss Franc", currencies, 1500000.0));
     }
 
     @Test
