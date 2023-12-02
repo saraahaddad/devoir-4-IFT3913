@@ -18,12 +18,24 @@ public class MainWindowConvertTest {
     @DisplayName("Test for 500 000")
     public void testT1(){
         assertEquals(465000.0,
-                // arbitrary currencies
+                // currencies are defined in specification -> test should pass
                 MainWindow.convert("US Dollar", "Euro", currencies, 500000.0));
 
         assertEquals(500000.0,
-                // arbitrary currencies
+                // currency is defined in specification -> test should pass
                 MainWindow.convert("US Dollar", "US Dollar", currencies, 500000.0));
+    }
+
+    @Test
+    @DisplayName("Test for CAD and CNY currencies")
+    public void testCurrecies(){
+        assertEquals(-1.0,
+                // CNY not defined in specification -> test should fail
+                MainWindow.convert("US Dollar", "Chinese Yuan Renminbi", currencies, 10.0));
+
+        assertEquals(13.50,
+                // currencies are defined in specification -> test should pass
+                MainWindow.convert("US Dollar", "Canadian Dollar", currencies, 10.0));
     }
 
     @Test
@@ -55,9 +67,6 @@ public class MainWindowConvertTest {
 
         assertEquals(1520000, MainWindow.convert(
                 "British Pound", "Swiss Franc", currencies, 1000000.0));
-
-        assertEquals(19410000, MainWindow.convert(
-                "Chinese Yuan Renminbi", "Japanese Yen", currencies, 1000000.0));
     }
 
     @Test
