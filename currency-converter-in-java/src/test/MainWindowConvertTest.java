@@ -28,7 +28,7 @@ public class MainWindowConvertTest {
 
     @Test
     @DisplayName("Test for CAD and CNY currencies")
-    public void testCurrecies(){
+    public void testCurrencies(){
         assertEquals(-1.0,
                 // CNY not defined in specification -> test should fail
                 MainWindow.convert("US Dollar", "Chinese Yuan Renminbi", currencies, 10.0));
@@ -82,10 +82,10 @@ public class MainWindowConvertTest {
     public void testT6(){
         // value is not in the interval of acceptable amounts
         assertEquals(-1.0,
-                MainWindow.convert("Japanese Yen", "US Dollar", currencies, -1000001.0));
+                MainWindow.convert("Japanese Yen", "US Dollar", currencies, 1000001.0));
 
         assertEquals(-1.0,
-                MainWindow.convert("Japanese Yen", "Japanese Yen", currencies, -1000001.0));
+                MainWindow.convert("Japanese Yen", "Japanese Yen", currencies, 1000001.0));
     }
 
     @BeforeEach
