@@ -4,7 +4,6 @@ Ce répertoire contient tout le code nécessaire à la complétion du devoir 4 d
 Lien vers le répertoire: https://github.com/saraahaddad/devoir-4-IFT3913
 
 Comment faire rouler les tests:
+S'assurer de bien avoir installé Junit 5 afin de pouvoir faire rouler les tests.
 
-Liens nécessaires à l'implémentation:
-    -  
 
